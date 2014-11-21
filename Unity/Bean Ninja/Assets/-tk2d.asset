@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41cb500cf0f58e74f9a52a8af931edde, type: 3}
+  m_Name: -tk2d
+  m_EditorClassIdentifier: 
+  version: 4
+  spriteAnimationIndex: []
+  fontIndex: []
+  spriteCollectionIndex:
+  - name: TilemapData
+    spriteCollectionGUID: 0f7434e46413dc043b3acdf1b2a02de1
+    spriteCollectionDataGUID: 9891417ad4b02e24191704e8c5bf57ec
+    spriteNames:
+    - FREE_PLACEHOLDER
+    - BLOCKED_PLACEHOLDER
+    - PLATTFORM_PLACEHOLDER
+    spriteTextureGUIDs:
+    - 44756d6d12b2b734295c74addf714315
+    - 4c270511e480eee4bad7ee6aeefb5f96
+    - 9ccf9c5d3b1ebd04e8748c53c4c0074c
+    spriteTextureTimeStamps:
+    - 1416577163.2
+    - 1416577151.60534
+    - 1416577620.99819
+    managedSpriteCollection: 0
+    loadable: 0
+    assetName: 
+    version: 3
