@@ -126,10 +126,10 @@
      <None Include="Assets\TK2DROOT\tk2d\Shaders\LitBlendVertexColor.shader" />
      <None Include="Assets\TK2DROOT\tk2d\Shaders\AdditiveVertexColor.shader" />
  <Reference Include="tk2dExternal">
- <HintPath>E:/Unity Projects/Bean Ninja/Assets/TK2DROOT/tk2d/Editor/tk2dExternal.dll</HintPath>
+ <HintPath>E:/Unity Projects/Game Jams/Bean Ninja/Beanja/Unity/Bean Ninja/Assets/TK2DROOT/tk2d/Editor/tk2dExternal.dll</HintPath>
  </Reference>
  <Reference Include="tk2dSkin">
- <HintPath>E:/Unity Projects/Bean Ninja/Assets/TK2DROOT/tk2d/Editor/tk2dSkin.dll</HintPath>
+ <HintPath>E:/Unity Projects/Game Jams/Bean Ninja/Beanja/Unity/Bean Ninja/Assets/TK2DROOT/tk2d/Editor/tk2dSkin.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Graphs">
  <HintPath>D:/Program Files (x86)/Unity4.3/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>

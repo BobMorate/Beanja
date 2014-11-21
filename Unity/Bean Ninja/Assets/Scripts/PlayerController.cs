@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour {
 	public GameObject jumpGasCloud;
 	public GameObject wallJumpGasCloud;
 	public GameObject doubleJumpGasCloud;
+	public Transform cameraTarget;
 
 	public float walkGasCloudRate;
 
@@ -40,6 +41,12 @@ public class PlayerController : MonoBehaviour {
 	private bool doubleJumped = false;
 
 	void Start () {
+		CameraFollow follow = Camera.main.GetComponent<CameraFollow>();
+		if(follow == null)
+		{
+			follow = Camera.main.gameObject.AddComponent<CameraFollow>();
+		}
+		follow.target = cameraTarget;
 		inputState = GetComponent<InputState>();
 		sprite = GetComponent<tk2dSprite>();
 		spriteAnimator = GetComponent<tk2dSpriteAnimator>();
