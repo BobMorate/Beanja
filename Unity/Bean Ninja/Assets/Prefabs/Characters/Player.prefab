@@ -218,7 +218,7 @@ MonoBehaviour:
   jumpOffSlideSpeed: {x: 12, y: 25}
   dropOffSlideSpeed: 2
   dropOffSlideTime: .370000005
-  slideGrabStrength: 100
+  slideGrabDownslideSpeed: .100000001
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

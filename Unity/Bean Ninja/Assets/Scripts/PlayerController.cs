@@ -30,8 +30,8 @@ public class PlayerController : MonoBehaviour {
 	public Vector2 jumpOffSlideSpeed;
 	public float dropOffSlideSpeed;
 	public float dropOffSlideTime;
-	public float slideGrabStrength = 0;
-	
+	public float slideGrabDownslideSpeed = .2f;
+
 	protected float  walkGasCloudTimer;
 	protected float fallDownReactionTimer;
 	protected float dropOffSlideTimer;
@@ -93,6 +93,7 @@ public class PlayerController : MonoBehaviour {
 		{
 			isSliding = 0;
 			doubleJumped = false;
+			rigidbody2D.gravityScale = 1;
 			if (inputState.leftDown)
 			{
 				vel.x = -1 * (isBalancing ? walkOnPlattformSpeed : walkSpeed);
@@ -135,8 +136,7 @@ public class PlayerController : MonoBehaviour {
 				}
 				if(inputState.leftDown)
 				{
-					vel.y = 0;
-					rigidbody2D.gravityScale = 0;
+					rigidbody2D.gravityScale = slideGrabDownslideSpeed;
 				}
 				else
 				{ 
@@ -170,8 +170,7 @@ public class PlayerController : MonoBehaviour {
 				}
 				if(inputState.rightDown)
 				{
-					vel.y = 0;
-					rigidbody2D.gravityScale = 0;
+					rigidbody2D.gravityScale = slideGrabDownslideSpeed;
 				}
 				else
 				{ 
@@ -223,6 +222,8 @@ public class PlayerController : MonoBehaviour {
 			if(Physics2D.OverlapArea(upLeft, bottomRight, GroundMask.value))
 			{
 				isSliding = -1;
+				vel.y = 0;
+				rigidbody2D.gravityScale = slideGrabDownslideSpeed;
 				dropOffSlideTimer = 0;
 			}
 			
@@ -232,6 +233,8 @@ public class PlayerController : MonoBehaviour {
 			if(Physics2D.OverlapArea(upLeft, bottomRight, GroundMask.value))
 			{
 				isSliding = 1;
+				vel.y = 0;
+				rigidbody2D.gravityScale = slideGrabDownslideSpeed;
 				dropOffSlideTimer = 0;
 			}
 		}
