@@ -6,6 +6,9 @@ public class EnemyController : MonoBehaviour {
 
 	public LayerMask GroundMask;
 	public LayerMask PlattformMask;
+	public LayerMask viewMask;
+	public Transform eyePosition;
+	public GameObject alertEffect;
 
 	public float walkSpeed;
 	public float turnAroundWaitTime;
@@ -14,12 +17,17 @@ public class EnemyController : MonoBehaviour {
 
 	public float viewDistance;
 	public float reactionTime;
+	public float stayAlertedTime;
 	
 
 	private Vector2 startPosition;
 	private WalkDirection currentWalkingDirection;
 	private float turnAroundWaitTimer = 0;
 	private WalkDirection turnTowardsWalkDirection;
+	private WalkDirection beforeAlertedWalkDirection;
+	
+	private float alertTimer;
+	private Transform alertTarget;
 
 	void Start () {
 		transform.position = Physics2D.Raycast(transform.position, -Vector2.up, float.PositiveInfinity, GroundMask).point;
@@ -37,7 +45,11 @@ public class EnemyController : MonoBehaviour {
 		Vector2 vel = rigidbody2D.velocity;
 		Vector2 pos = transform.position;
 		Bounds colliderBounds = collider2D.bounds;
-
+		UpdateWatching();
+		if(alertTimer > 0)
+		{
+			UpdateAlerted();
+		}
 		if(turnAroundWaitTimer > 0)
 		{
 			UpdateWaiting();
@@ -48,6 +60,44 @@ public class EnemyController : MonoBehaviour {
 		}
 		vel.x = walkSpeed * (int)currentWalkingDirection;
 		rigidbody2D.velocity = vel;
+	}
+
+	private void UpdateAlerted()
+	{
+		alertTimer -= Time.deltaTime;
+		if(alertTimer <= 0)
+		{
+			currentWalkingDirection = beforeAlertedWalkDirection;
+		}
+	}
+
+	private void UpdateWatching()
+	{
+		if(alertTimer <= 0)
+		{
+			RaycastHit2D hit = Physics2D.Raycast(eyePosition.position, Vector2.right * transform.localScale.x, viewDistance, viewMask);
+			if(hit != null && hit.collider != null && hit.collider.tag == "Player")
+			{
+				alertTimer = stayAlertedTime;
+				alertTarget = hit.transform;
+				beforeAlertedWalkDirection = currentWalkingDirection;
+				currentWalkingDirection = WalkDirection.stand;
+				Instantiate(alertEffect, transform.position, Quaternion.identity);
+			}
+		}
+		else
+		{
+			
+			RaycastHit2D hit = Physics2D.Raycast(eyePosition.position, alertTarget.position - eyePosition.position, viewDistance, viewMask);
+			if(hit!=null && hit.collider != null && hit.collider.tag == "Player")
+			{
+				if(alertTimer < stayAlertedTime - 1)
+				{
+					Instantiate(alertEffect, transform.position, Quaternion.identity);
+				}
+				alertTimer = stayAlertedTime;
+			}
+		}
 	}
 
 	private void UpdateWaiting()
