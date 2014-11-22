@@ -692,9 +692,9 @@ MonoBehaviour:
   PlattformMask:
     serializedVersion: 2
     m_Bits: 512
-  walkSpeed: 2
-  turnAroundWaitTime: 3
-  startWalkingDirection: -1
+  walkSpeed: 4
+  turnAroundWaitTime: 1
+  startWalkingDirection: 0
   viewDistance: 0
   reactionTime: 0
 --- !u!50 &218105304
@@ -2024,7 +2024,7 @@ MonoBehaviour:
   wallJumpGasCloud: {fileID: 100000, guid: 8faa4d41c6e76f6439208a12d4e43885, type: 2}
   doubleJumpGasCloud: {fileID: 100000, guid: 58a724161d0f3994784f3a4b0bfbf9ad, type: 2}
   cameraTarget: {fileID: 340352094}
-  walkGasCloudRate: 2
+  walkGasCloudRate: 1
   isSliding: 0
   GroundMask:
     serializedVersion: 2
@@ -2032,9 +2032,9 @@ MonoBehaviour:
   PlattformMask:
     serializedVersion: 2
     m_Bits: 512
-  walkSpeed: 8
+  walkSpeed: 12
   walkOnPlattformSpeed: 0
-  maxJumpForce: 15
+  maxJumpForce: 25
   breakJumpForce: 1
   airControl: 100
   fallDownReactionTime: .150000006
