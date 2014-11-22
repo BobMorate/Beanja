@@ -135,10 +135,10 @@ MonoBehaviour:
     m_Bits: 4294967295
   eyePosition: {fileID: 400004}
   alertEffect: {fileID: 100000, guid: d368f77639998cc4d8b032421f68b10e, type: 2}
-  walkSpeed: 4
-  turnAroundWaitTime: 1
+  walkSpeed: 2
+  turnAroundWaitTime: 3
   startWalkingDirection: -1
-  viewDistance: 5
+  viewDistance: 0
   reactionTime: 0
   stayAlertedTime: 5
 --- !u!212 &21200000
