@@ -12,6 +12,10 @@ public class EnemyController : MonoBehaviour {
 	public enum WalkDirection { left = -1, stand = 0, right = 1}
 	public WalkDirection startWalkingDirection;
 
+	public float viewDistance;
+	public float reactionTime;
+	
+
 	private Vector2 startPosition;
 	private WalkDirection currentWalkingDirection;
 	private float turnAroundWaitTimer = 0;

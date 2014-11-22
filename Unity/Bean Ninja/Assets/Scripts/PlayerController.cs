@@ -184,6 +184,7 @@ public class PlayerController : MonoBehaviour {
 				if(!Physics2D.OverlapArea(upLeft, bottomRight, GroundMask.value))
 				{
 					isSliding = 0;
+					rigidbody2D.gravityScale = 1;
 				}
 			}
 			if (inputState.jumpDown && jumpReleased)
