@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour {
 	public LayerMask PlattformMask;
 
 	public float walkSpeed;
+	public float walkOnPlattformSpeed;
 	public float maxJumpForce;
 	public float breakJumpForce;
 	public float airControl;
@@ -37,6 +38,7 @@ public class PlayerController : MonoBehaviour {
 
 	protected bool jumpReleased;
 	private float spawnCount = 1;
+	private bool isBalancing = false;
 
 	private bool doubleJumped = false;
 
@@ -64,7 +66,7 @@ public class PlayerController : MonoBehaviour {
 		Bounds colliderBounds = collider2D.bounds;
 		Vector2 upLeft = new Vector2(colliderBounds.center.x - colliderBounds.extents.x + smallDistance, colliderBounds.center.y - colliderBounds.extents.y + smallDistance);
 		Vector2 bottomRight = new Vector2(colliderBounds.center.x + colliderBounds.extents.x - smallDistance, colliderBounds.center.y - colliderBounds.extents.y - smallDistance);
-		if(Physics2D.OverlapArea(upLeft, bottomRight, GroundMask.value | (vel.y > 0 ? 0 : PlattformMask.value)) != null && vel.y <= 0)
+		if(vel.y <= 0 && Physics2D.OverlapArea(upLeft, bottomRight, GroundMask.value | PlattformMask.value) != null)
 		{
 			fallDownReactionTimer = fallDownReactionTime;
 		}
@@ -72,6 +74,17 @@ public class PlayerController : MonoBehaviour {
 		{
 			fallDownReactionTimer -= Time.deltaTime;
 		}
+		if(vel.y <= 0 && Physics2D.OverlapArea(upLeft, bottomRight, PlattformMask.value) != null)
+		{
+			isBalancing = true;
+		}
+		else
+		{
+			isBalancing = false;
+		}
+
+
+
 		if(!inputState.jumpDown)
 		{
 			jumpReleased = true;
@@ -82,11 +95,11 @@ public class PlayerController : MonoBehaviour {
 			doubleJumped = false;
 			if (inputState.leftDown)
 			{
-				vel.x = -walkSpeed;
+				vel.x = -1 * (isBalancing ? walkOnPlattformSpeed : walkSpeed);
 			}
 			else if (inputState.rightDown)
 			{
-				vel.x = walkSpeed;
+				vel.x = isBalancing ? walkOnPlattformSpeed : walkSpeed;
 			}
 			else
 			{

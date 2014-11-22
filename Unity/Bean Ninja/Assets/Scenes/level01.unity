@@ -829,7 +829,7 @@ Prefab:
     - target: {fileID: 11400000, guid: 86e932fd2f92e7b4b89842beebb71e6f, type: 2}
       propertyPath: target
       value: 
-      objectReference: {fileID: 613048625}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 86e932fd2f92e7b4b89842beebb71e6f, type: 2}
   m_RootGameObject: {fileID: 1401846724}
@@ -1541,7 +1541,7 @@ Transform:
   - {fileID: 829012381}
   - {fileID: 620049584}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!50 &1400984290
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -1665,7 +1665,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acbce4ba8db266c4c8eff263104c7933, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 613048625}
+  target: {fileID: 0}
   followSpeed: 5
 --- !u!81 &1401846726
 AudioListener:
@@ -1735,7 +1735,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!1001 &1436493766
 Prefab:
   m_ObjectHideFlags: 0
